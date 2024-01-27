@@ -2,7 +2,7 @@
 import * as React from 'react'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
-
+import Script from 'next/script';
 import * as Fathom from 'fathom-client'
 // used for rendering equations (optional)
 import 'katex/dist/katex.min.css'
@@ -56,5 +56,22 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router.events])
 
-  return <Component {...pageProps} />
+  return (
+  <>
+  <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-951FPNCD8Q"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-951FPNCD8Q');
+        `}
+      </Script>
+      <Component {...pageProps} />
+  </>
+  )
 }
