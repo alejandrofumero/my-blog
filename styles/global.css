@@ -12,6 +12,15 @@ html {
   padding: 0;
   margin: 0;
 }
+html {
+  background-color: #2f3437;
+}
+html:has(.light-mode){
+  background-color: #fff;
+}
+html:has(.dark-mode){
+  background-color: #2f3437;
+}
 
 body {
   --notion-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
